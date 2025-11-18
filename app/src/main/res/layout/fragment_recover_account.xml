@@ -42,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/TextViewMensagem"
-                    android:text="Informe seu e-mail de cadastro para receber \num link para aletração de senha."
+                    android:text="Informe seu e-mail de cadastro para receber \num link para alteração de senha."
                     android:textColor="@color/white"
                     android:textAlignment="center"
                     android:layout_marginTop="24dp"/>
