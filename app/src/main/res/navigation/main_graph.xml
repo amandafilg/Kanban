@@ -9,10 +9,10 @@
         android:id="@+id/splashFragment3"
         android:name="com.amanda.task.ui.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash"
-        app:popUpTo="@id/splashFragment3"
-        app:popUpToInclusive="true">
+        tools:layout="@layout/fragment_splash">
         <action
+            app:popUpTo="@id/splashFragment3"
+            app:popUpToInclusive="true"
             android:id="@+id/action_splashFragment3_to_authentication"
             app:destination="@id/authentication" />
     </fragment>
