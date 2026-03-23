@@ -18,7 +18,7 @@ class TodoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTodoBinding.inflate(inflater,container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
         return binding.root
     }
 
@@ -28,7 +28,9 @@ class TodoFragment : Fragment() {
     }
 
     private fun initListeners(){
-        findNavController().navigate((R.id.action_homeFragment_to_formTaskFragment))
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate((R.id.action_homeFragment_to_formTaskFragment))
+        }
     }
 
     override fun onDestroyView() {

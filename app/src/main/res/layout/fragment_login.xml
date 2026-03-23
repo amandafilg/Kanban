@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amanda Carvalho Filgueiras"
+            android:text="@string/my_name"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:layout_gravity="center"/>
@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="E-mail"
+            android:text="@string/email_text"
             android:textColor="@color/white"
             android:layout_marginTop="15dp"/>
 
@@ -38,14 +38,14 @@
             android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Digite seu e-mail"
+            android:hint="@string/hint_edit_email"
             android:inputType="textEmailAddress"
             android:layout_marginTop="4dp"
             style="@style/EditTextTheme"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Senha"
+            android:text="@string/password_text"
             android:textColor="@color/white"
             android:layout_marginTop="16dp"/>
 
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:inputType="textPassword"
-            android:hint="Digite sua senha"
+            android:hint="@string/hint_edit_password"
             android:layout_marginTop="4dp"
             style="@style/EditTextTheme"/>
 
@@ -62,11 +62,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonLogin"
-            android:text="LOGIN"
-            style="@style/EditTextTheme"
+            android:text="@string/text_title_login_fragment"
+            style="@style/ButtonTheme"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@null"
-
+            app:backgroundTint="@null"
+            android:background="@drawable/bg_btn"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                 android:id="@+id/btnRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Criar Conta"
+                android:text="@string/text_title_register_fragment"
                 android:layout_weight="1"
                 android:textAlignment="textStart"
                 android:textColor="@color/white"/>
@@ -87,7 +87,7 @@
                 android:id="@+id/btnRecover"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recuperar Conta"
+                android:text="@string/text_title_recover_fragment"
                 android:layout_weight="1"
                 android:textAlignment="textEnd"
                 android:textColor="@color/white"/>
