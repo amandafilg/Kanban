@@ -9,6 +9,26 @@
     android:padding="20dp"
     android:fillViewport="true">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_back"
+            android:paddingTop="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:text="Nova tarefa"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"/>
+        </com.google.android.material.appbar.MaterialToolbar>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +47,7 @@
             android:id="@+id/editTextDescricao"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@drawable/bg_edit_text"
+            style="@style/EditTextTheme"
             android:hint="Informe sua nova Tarefa"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +78,8 @@
                     android:id="@+id/rbTodo"
                     android:text="A Fazer"
                     android:textColor="@color/white"
-                    android:theme="@style/MyRadioButton"/>
+                    android:theme="@style/MyRadioButton"
+                    android:checked="true"/>
 
                 <RadioButton
                     android:layout_width="88dp"
@@ -79,7 +100,7 @@
                     android:theme="@style/MyRadioButton"/>
             </RadioGroup>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/buttonSave"
@@ -111,5 +132,6 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonSave"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>

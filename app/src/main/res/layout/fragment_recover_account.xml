@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 app:navigationIcon="@drawable/ic_back"
                 android:paddingTop="40dp"
-                android:id="@+id/buttonBack">
+                android:id="@+id/toolbar">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -55,15 +55,16 @@
                     android:textColor="@color/white"/>
 
                 <EditText
+                    android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:hint="Digite seu e-mail"
                     android:inputType="textEmailAddress"
-                    android:padding="10dp"
                     android:layout_marginTop="4dp"
-                    android:background="@drawable/bg_edit_text"/>
+                    style="@style/EditTextTheme"/>
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonEnviar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enviar"
