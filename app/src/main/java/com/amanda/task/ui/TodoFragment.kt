@@ -18,7 +18,7 @@ class TodoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentTodoBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -29,7 +29,7 @@ class TodoFragment : Fragment() {
 
     private fun initListeners(){
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate((R.id.action_homeFragment_to_formTaskFragment))
+            findNavController().navigate(R.id.action_homeFragment_to_formTaskFragment)
         }
     }
 

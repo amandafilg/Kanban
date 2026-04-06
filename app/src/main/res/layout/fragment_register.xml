@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="20dp"
-                android:text="Criar Conta"
+                android:text="text_title_toolbar_register_fragment"
                 android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"/>
         </com.google.android.material.appbar.MaterialToolbar>
@@ -41,21 +41,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="E-mail"
+                android:text="@string/email_text"
                 android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/inputEmail"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:hint="Digite seu e-mail"
+                android:hint="@string/hint_edit_email"
                 android:inputType="textEmailAddress"
                 android:layout_marginTop="4dp"
                 style="@style/EditTextTheme"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Senha"
+                android:text="@string/password_text"
                 android:textColor="@color/white"
                 android:layout_marginTop="16dp"/>
 
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:inputType="textPassword"
-                android:hint="Digite sua senha"
+                android:hint="@string/hint_edit_password"
                 android:layout_marginTop="4dp"
                 style="@style/EditTextTheme"/>
 
@@ -72,7 +72,7 @@
                 android:id="@+id/buttonRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Enviar"
+                android:text="@string/text_send"
                 android:textColor="@color/color_default"
                 app:backgroundTint="@null"
                 android:layout_marginTop="16dp"
@@ -88,7 +88,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amanda Carvalho Filgueiras"
+            android:text="@string/my_name"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:layout_marginTop="35dp"
