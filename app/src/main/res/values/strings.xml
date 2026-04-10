@@ -41,5 +41,11 @@
     <string name="text_todo">A Fazer</string>
     <string name="text_done">Feito</string>
 
+    <string name="text_edit">Editar</string>
+    <string name="text_remove">Remover</string>
+    <string name="text_details">Detalhes</string>
+    <string name="text_back">Anterior</string>
+    <string name="text_forward">Próximo</string>
+
     <string name="description_empty_form_task_fragment">Preencha uma descrição!</string>
 </resources>

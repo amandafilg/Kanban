@@ -4,4 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#4CAF50</color>
     <color name="color_default">#F25E70</color>
+    <color name="color_delete">#CC2018</color>
+    <color name="color_details">#4C978F</color>
+
+    <color name="color_status_todo">#FF841A</color>
+    <color name="color_status_done">#04D5C1</color>
 </resources>
