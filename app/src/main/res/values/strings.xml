@@ -46,6 +46,8 @@
     <string name="text_details">Detalhes</string>
     <string name="text_back">Anterior</string>
     <string name="text_forward">Próximo</string>
+    <string name="text_logout">Logout</string>
+    <string name="text_description_tabs">Tabs</string>
 
     <string name="description_empty_form_task_fragment">Preencha uma descrição!</string>
 </resources>
