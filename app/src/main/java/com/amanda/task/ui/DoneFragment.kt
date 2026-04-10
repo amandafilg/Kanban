@@ -38,6 +38,7 @@ class DoneFragment : Fragment() {
         binding.recyclerViewTask.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewTask.setHasFixedSize(true)
         binding.recyclerViewTask.adapter = taskAdapter
+        taskAdapter.submitList(taskList)
     }
     private fun optionSelected(task: Task, option:Int){
         when (option){
