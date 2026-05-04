@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "14432184674",
+    "project_id": "kanban-9a6b9",
+    "storage_bucket": "kanban-9a6b9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14432184674:android:f436913ecd40af526f243b",
+        "android_client_info": {
+          "package_name": "com.amanda.task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgC1vLe0sOCdIWTYzbKhU4hQZGaOfnWeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

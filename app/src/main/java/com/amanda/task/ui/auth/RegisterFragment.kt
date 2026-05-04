@@ -12,10 +12,14 @@ import com.amanda.task.databinding.FragmentRegisterBinding
 import com.amanda.task.databinding.FragmentSplashBinding
 import com.amanda.task.ui.util.initToolbar
 import com.amanda.task.ui.util.showBottomSheet
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
+
+    //Variável que armazena a API de autenticação com o Firebase.
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
