@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="20dp"
-                android:text="text_title_toolbar_register_fragment"
+                android:text="@string/text_title_toolbar_register_fragment"
                 android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"/>
         </com.google.android.material.appbar.MaterialToolbar>
@@ -79,11 +79,14 @@
                 android:backgroundTint="@null"
                 android:background="@drawable/bg_btn"/>
             <ProgressBar
+                android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:indeterminateTint="@color/white"
                 android:layout_marginTop="8dp"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                tools:visibility="visible"/>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
