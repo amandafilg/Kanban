@@ -14,6 +14,7 @@ import com.amanda.task.data.model.Task
 import com.amanda.task.data.model.Status
 import android.widget.Toast
 import com.amanda.task.ui.util.FirebaseHelper
+import com.amanda.task.ui.util.showBottomSheet
 
 class TodoFragment : Fragment() {
     private var _binding: FragmentTodoBinding? = null
@@ -58,8 +59,13 @@ class TodoFragment : Fragment() {
         when (option){
 
             TaskAdapter.SELECT_REMOVE -> {
-                deleteTask(task)
-                Toast.makeText(requireContext(), "Removendo ${task.description}", Toast.LENGTH_SHORT).show()
+                showBottomSheet(titleDialog = R.string.text_title_dialog_delete,
+                    message = getString(R.string.text_message_dialog_delete),
+                    titleButton = R.string.text_button_dialog_confirm,
+                    onClick = {
+                        deleteTask(task)
+                    }
+                )
             }
 
             TaskAdapter.SELECT_EDIT -> {

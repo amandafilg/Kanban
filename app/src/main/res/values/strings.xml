@@ -23,6 +23,7 @@
     <string name="text_status">Status</string>
     <string name="text_save">Salvar</string>
     <string name="text_send">Enviar</string>
+    <string name="text_delete_sucess_task">Tarefa removida com sucesso.</string>
 
     <string name="text_title_login_fragment">Login</string>
     <string name="text_title_register_fragment">Criar conta</string>
@@ -36,6 +37,7 @@
     <string name="text_title_toolbar_recover_account_fragment">Recuperar conta</string>
     <string name="text_button_recover_account_fragment">Enviar</string>
     <string name="text_hint_new_task">Informe sua nova Tarefa</string>
+
 
     <string name="text_doing">Fazendo</string>
     <string name="text_todo">A Fazer</string>
