@@ -13,6 +13,7 @@ import com.amanda.task.ui.adapter.TaskAdapter
 import com.amanda.task.data.model.Task
 import com.amanda.task.data.model.Status
 import android.widget.Toast
+import com.amanda.task.ui.util.FirebaseHelper
 
 class TodoFragment : Fragment() {
     private var _binding: FragmentTodoBinding? = null
@@ -57,6 +58,7 @@ class TodoFragment : Fragment() {
         when (option){
 
             TaskAdapter.SELECT_REMOVE -> {
+                deleteTask(task)
                 Toast.makeText(requireContext(), "Removendo ${task.description}", Toast.LENGTH_SHORT).show()
             }
 
@@ -69,7 +71,8 @@ class TodoFragment : Fragment() {
             }
 
             TaskAdapter.SELECT_NEXT -> {
-                Toast.makeText(requireContext(), "Próximo", Toast.LENGTH_SHORT).show()
+                task.status = Status.DOING
+                updateTask(task)
             }
         }
     }
@@ -83,6 +86,25 @@ class TodoFragment : Fragment() {
             Task("4", "Criar funcionalidade de logout no app",Status.TODO),
         )
         taskAdapter.submitList(taskList)
+    }
+
+    private fun deleteTask(task:Task){
+        reference
+            .child("task")
+            .child(FirebaseHelper.getIdUser())
+            .child(task.id)
+            .removeValue().addCompleteListener{ result ->
+                if(result.isSuccessful){
+                    Toast.makeText(requireContext(), R.string.text_delete_sucess_task, Toast.LENGTH_SHORT).show()
+
+                }else{
+                    Toast.makeText(requireContext(), R.string.error_generic, Toast.LENGTH_SHORT).show()
+                }
+            }
+
+    }
+    private fun updateTask(task: Task){
+
     }
 
     override fun onDestroyView() {
