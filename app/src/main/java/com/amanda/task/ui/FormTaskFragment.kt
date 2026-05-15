@@ -39,7 +39,7 @@ class FormTaskFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
-    ): View? {
+    ): View {
         _binding = FragmentFormTaskBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -55,6 +55,14 @@ class FormTaskFragment : Fragment() {
     private fun initListener(){
         binding.buttonSave.setOnClickListener {
             validateData()
+        }
+
+        binding.radioGroup.setOnCheckedChangeListener { _, id-> status =
+            when(id){
+                R.id.rbTodo -> Status.TODO
+                R.id.rbDoing -> Status.DOING
+                else -> Status.DONE
+            }
         }
     }
     private fun validateData(){

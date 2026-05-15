@@ -55,4 +55,8 @@
     <string name="text_description_tabs">Tabs</string>
 
     <string name="description_empty_form_task_fragment">Preencha uma descrição!</string>
+    <string name="text_save_sucess_form_task_fragment">Tarefa salva com sucesso</string>
+    <string name="text_title_dialog_delete">Excluir tarefa</string>
+    <string name="text_message_dialog_delete">Você realmente deseja remover esta atividade da sua lista?</string>
+    <string name="text_button_dialog_confirm">Excluir</string>
 </resources>
