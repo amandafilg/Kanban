@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.Firebase
 import com.amanda.task.R
 import com.amanda.task.data.model.Task
@@ -20,6 +21,7 @@ import com.google.firebase.auth.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
 import com.amanda.task.data.model.Status
+import kotlin.getValue
 
 class FormTaskFragment : Fragment() {
     private var _binding: FragmentFormTaskBinding? = null
@@ -34,6 +36,9 @@ class FormTaskFragment : Fragment() {
     private lateinit var reference: DatabaseReference
 
     private lateinit var auth: FirebaseAuth
+
+    private val args: FormTaskFragmentArgs by navArgs()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +56,14 @@ class FormTaskFragment : Fragment() {
         auth = Firebase.auth
 
         initListener()
+    }
+
+    private fun getArgs(){
+        args.task.let {
+            if (it != null){
+                this.task = it
+            }
+        }
     }
     private fun initListener(){
         binding.buttonSave.setOnClickListener {

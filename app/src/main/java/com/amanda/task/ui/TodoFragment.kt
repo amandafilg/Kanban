@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
 import com.google.firebase.database.ValueEventListener
+import androidx.navigation.fragment.navArgs
 
 
 class TodoFragment : Fragment() {
@@ -86,6 +87,8 @@ class TodoFragment : Fragment() {
             }
 
             TaskAdapter.SELECT_EDIT -> {
+                val action = HomeFragmentDirections.actionHomeFragmentToFormTaskFragment(task)
+                findNavController().navigate(action)
                 Toast.makeText(requireContext(), "Editando ${task.description}", Toast.LENGTH_SHORT).show()
             }
 
@@ -131,7 +134,7 @@ class TodoFragment : Fragment() {
             .child("task")
             .child(auth.currentUser?.uid ?: "")
             .child(task.id)
-            .removeValue().addCompleteListener{ result ->
+            .removeValue().addOnCompleteListener{ result ->
                 if(result.isSuccessful){
                     Toast.makeText(requireContext(), R.string.text_delete_sucess_task, Toast.LENGTH_SHORT).show()
 

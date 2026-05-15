@@ -109,12 +109,13 @@
             android:text="@string/text_save"
             android:textAllCaps="false"
             android:textColor="@color/color_default"
-            android:backgroundTint="@null"
+            app:backgroundTint="@null"
             app:layout_editor_absoluteX="16dp"
             app:layout_editor_absoluteY="221dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/radioGroup"/>
+
 
         <ProgressBar
             android:layout_width="wrap_content"

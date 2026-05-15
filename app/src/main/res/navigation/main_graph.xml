@@ -61,4 +61,8 @@
         android:name="com.amanda.task.ui.FormTaskFragment"
         android:label="fragment_form_task"
         tools:layout="@layout/fragment_form_task" />
+    <argument
+        android:name="task"
+        app:argType="com.amanda.task.data.model.Task"
+        app:nullable="true" />
 </navigation>

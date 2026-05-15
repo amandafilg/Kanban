@@ -39,7 +39,8 @@
             android:text="@string/text_list_task_empty"
             tools:text="@string/text_list_task_load"
             android:layout_marginTop="8dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:id="@+id/textInfo"/>
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
