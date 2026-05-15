@@ -13,13 +13,20 @@ import com.amanda.task.ui.adapter.TaskAdapter
 import com.amanda.task.data.model.Task
 import com.amanda.task.data.model.Status
 import android.widget.Toast
-import com.amanda.task.ui.util.FirebaseHelper
 import com.amanda.task.ui.util.showBottomSheet
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.database.DatabaseReference
 
 class TodoFragment : Fragment() {
     private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
     private lateinit var taskAdapter: TaskAdapter
+
+    private lateinit var reference: DatabaseReference
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +39,10 @@ class TodoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        reference = Firebase.database.reference
+        auth = Firebase.auth
+
         initListeners()
         initRecyclerViewTask()
         getTask()
@@ -84,20 +95,19 @@ class TodoFragment : Fragment() {
     }
 
     private fun getTask() {
-        val taskList = listOf(
-            Task("0", "Criar nova tela do app",Status.TODO),
-            Task("1", "Validar informações na tela de login",Status.TODO),
-            Task("2", "Adicionar nova funcionalidade no app",Status.TODO),
-            Task("3", "Salvar token localmente",Status.TODO),
-            Task("4", "Criar funcionalidade de logout no app",Status.TODO),
-        )
+        reference
+            .child("tasks")
+            .child(auth.currentUser?.uid ?: "")
+            .addValueEventListener(objetc: ValueEventListener){
+
+            }
         taskAdapter.submitList(taskList)
     }
 
     private fun deleteTask(task:Task){
         reference
             .child("task")
-            .child(FirebaseHelper.getIdUser())
+            .child(auth.currentUser?.uid ?: "")
             .child(task.id)
             .removeValue().addCompleteListener{ result ->
                 if(result.isSuccessful){

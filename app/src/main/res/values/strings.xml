@@ -24,6 +24,9 @@
     <string name="text_save">Salvar</string>
     <string name="text_send">Enviar</string>
     <string name="text_delete_sucess_task">Tarefa removida com sucesso.</string>
+    <string name="error_generic">Ocorreu um erro! Por favor tente novamente mais tarde.</string>
+    <string name="text_list_task_empty">Nenhuma tarefa cadastrada!</string>
+    <string name="text_list_task_load">Aguarde, estamos carregando as informações</string>
 
     <string name="text_title_login_fragment">Login</string>
     <string name="text_title_register_fragment">Criar conta</string>
