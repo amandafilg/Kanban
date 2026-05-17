@@ -98,7 +98,8 @@
             android:indeterminateTint="@color/white"
             android:layout_gravity="center"
             tools:visibility="visible"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:id="@+id/progressBar"/>
     </LinearLayout>
 
 

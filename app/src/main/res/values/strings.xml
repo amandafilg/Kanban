@@ -59,4 +59,14 @@
     <string name="text_title_dialog_delete">Excluir tarefa</string>
     <string name="text_message_dialog_delete">Você realmente deseja remover esta atividade da sua lista?</string>
     <string name="text_button_dialog_confirm">Excluir</string>
+    <string name="text_toolbar_update_form_task_fragment">Editando tarefa...</string>
+    <string name="text_update_sucess_form_task_fragment">Tarefa editada com sucesso!</string>
+    <string name="text_email_sent_to_recover_account">Um e-mail foi enviado para sua caixa de entrada.</string>
+
+    <!--Erros Firebase Athentication-->
+    <string name="account_not_registered_register_fragment">Nenhuma conta encontrada em este e-mail.</string>
+    <string name="invalid_email_register_fragment">Insira um e-mail válido.</string>
+    <string name="invalid_password_register_fragment">Senha inválida, tente novamente.</string>
+    <string name="email_in_user_register_fragment">Este e-mail já está em uso.</string>
+    <string name="strong_password_register_fragment">Insira uma senha mais forte.</string>
 </resources>

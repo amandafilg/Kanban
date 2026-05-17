@@ -11,11 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.amanda.task.R
 import com.amanda.task.databinding.FragmentRegisterBinding
 import com.amanda.task.databinding.FragmentSplashBinding
+import com.amanda.task.ui.BaseFragment
+import com.amanda.task.ui.util.FirebaseHelper
 import com.amanda.task.ui.util.initToolbar
 import com.amanda.task.ui.util.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
 
-class RegisterFragment : Fragment() {
+class RegisterFragment : BaseFragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
@@ -34,6 +36,7 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(binding.toolbar)
         initListener()
+        auth = FirebaseAuth.getInstance()
     }
     private fun initListener(){
         binding.buttonRegister.setOnClickListener{
@@ -45,6 +48,7 @@ class RegisterFragment : Fragment() {
         val senha = binding.inputPassword.text.toString().trim()
         if (email.isNotBlank()){
             if (senha.isNotBlank()){
+                hideKeyboard()
                 Toast.makeText(requireContext(),"Tudo OK!", Toast.LENGTH_SHORT).show()
                 binding.progressBar.isVisible = true
                 registerUser(email, senha)
@@ -65,7 +69,7 @@ class RegisterFragment : Fragment() {
                         findNavController().navigate(R.id.action_global_homeFragment)
                     }else{
                         binding.progressBar.isVisible = false
-                        Toast.makeText(requireContext(), task.exception?.message, Toast.LENGTH_SHORT).show()
+                        showBottomSheet(message = getString(FirebaseHelper.validError(task.exception?.message.toString())))
                     }
 
                 }

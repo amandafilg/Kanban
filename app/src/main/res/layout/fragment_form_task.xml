@@ -26,7 +26,8 @@
                 android:paddingTop="20dp"
                 android:text="@string/text_new_task"
                 android:textColor="@color/white"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/textToolbar"/>
         </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout

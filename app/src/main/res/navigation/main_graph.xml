@@ -28,7 +28,7 @@
             tools:layout="@layout/fragment_login">
             <action
                 android:id="@+id/action_loginFragment_to_registerFragment"
-                app:destination="@id/registerFragment" />
+                app:destination="@id/navigation" />
             <action
                 android:id="@+id/action_loginFragment_to_recoverAccountFragment"
                 app:destination="@id/recoverAccountFragment" />
@@ -38,14 +38,17 @@
             android:name="com.amanda.task.ui.auth.RecoverAccountFragment"
             android:label="fragment_recover_account"
             tools:layout="@layout/fragment_recover_account" />
-        <fragment
-            android:id="@+id/registerFragment"
-            android:name="com.amanda.task.ui.auth.RegisterFragment"
-            android:label="fragment_register"
-            tools:layout="@layout/fragment_register" />
         <action
             android:id="@+id/action_global_homeFragment"
             app:destination="@id/homeFragment" />
+        <navigation android:id="@+id/navigation"
+            app:startDestination="@id/registerFragment">
+            <fragment
+                android:id="@+id/registerFragment"
+                android:name="com.amanda.task.ui.auth.RegisterFragment"
+                android:label="fragment_register"
+                tools:layout="@layout/fragment_register" />
+        </navigation>
     </navigation>
     <fragment
         android:id="@+id/homeFragment"
@@ -60,9 +63,10 @@
         android:id="@+id/formTaskFragment"
         android:name="com.amanda.task.ui.FormTaskFragment"
         android:label="fragment_form_task"
-        tools:layout="@layout/fragment_form_task" />
-    <argument
-        android:name="task"
-        app:argType="com.amanda.task.data.model.Task"
-        app:nullable="true" />
+        tools:layout="@layout/fragment_form_task">
+        <argument
+            android:name="task"
+            app:argType="com.amanda.task.data.model.Task"
+            app:nullable="true" />
+    </fragment>
 </navigation>

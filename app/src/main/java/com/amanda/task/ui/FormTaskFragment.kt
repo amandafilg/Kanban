@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.Firebase
 import com.amanda.task.R
+import com.amanda.task.TaskViewModel
 import com.amanda.task.data.model.Task
 import com.amanda.task.databinding.FragmentFormTaskBinding
 import com.amanda.task.databinding.FragmentRegisterBinding
@@ -21,9 +23,11 @@ import com.google.firebase.auth.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
 import com.amanda.task.data.model.Status
+import com.amanda.task.ui.util.FirebaseHelper
 import kotlin.getValue
 
-class FormTaskFragment : Fragment() {
+
+class FormTaskFragment : BaseFragment() {
     private var _binding: FragmentFormTaskBinding? = null
     private val binding get() = _binding!!
 
@@ -33,9 +37,7 @@ class FormTaskFragment : Fragment() {
 
     private var status: Status = Status.TODO
 
-    private lateinit var reference: DatabaseReference
-
-    private lateinit var auth: FirebaseAuth
+    private val viewModel: TaskViewModel by activityViewModels()
 
     private val args: FormTaskFragmentArgs by navArgs()
 
@@ -52,18 +54,33 @@ class FormTaskFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initToolbar(binding.toolbar)
 
-        reference = Firebase.database.reference
-        auth = Firebase.auth
-
+        getArgs()
         initListener()
     }
 
     private fun getArgs(){
-        args.task.let {
+        args.task.let{
             if (it != null){
                 this.task = it
+                configTask()
             }
         }
+    }
+
+    private fun configTask(){
+        newTask = false
+        status = task.status
+        binding.textToolbar.setText(R.string.text_toolbar_update_form_task_fragment)
+        binding.editTextDescricao.setText(task.description)
+        setStatus()
+    }
+    private fun setStatus(){
+        val id = when (task.status){
+            Status.TODO -> R.id.rbTodo
+            Status.DOING -> R.id.rbDoing
+            else -> R.id.rbDone
+        }
+        binding.radioGroup.check(id)
     }
     private fun initListener(){
         binding.buttonSave.setOnClickListener {
@@ -81,9 +98,11 @@ class FormTaskFragment : Fragment() {
     private fun validateData(){
         val description = binding.editTextDescricao.text.toString().trim()
         if (description.isNotBlank()){
+            hideKeyboard()
             binding.progressBar.isVisible = true
+
             if(newTask) task = Task()
-            task.id = reference.database.reference.push().key ?: ""
+
             task.description = description
             task.status = status
 
@@ -94,11 +113,22 @@ class FormTaskFragment : Fragment() {
     }
 
     private fun saveTask() {
-        reference
+        val userId = FirebaseHelper.getIdUser()
+        if (userId == null){
+            showBottomSheet(message = getString(R.string.error_generic))
+            return
+        }
+        binding.progressBar.isVisible = true
+
+        FirebaseHelper.getDatabase()
             .child("task")
-            .child(auth.currentUser?.uid ?: "")
+            .child(userId)
             .child(task.id)
-            .setValue(task).addOnCompleteListener { result ->
+            .setValue(task)
+            .addOnCompleteListener { result ->
+
+                binding.progressBar.isVisible = false
+
                 if (result.isSuccessful) {
                     Toast.makeText(
                         requireContext(),
@@ -108,7 +138,15 @@ class FormTaskFragment : Fragment() {
                     if (newTask) {
                         findNavController().popBackStack()
                     } else {
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.text_update_sucess_form_task_fragment,
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        viewModel.setUpdateTask(task)
                         binding.progressBar.isVisible = false
+
                     }
                 } else {
                     binding.progressBar.isVisible = false
