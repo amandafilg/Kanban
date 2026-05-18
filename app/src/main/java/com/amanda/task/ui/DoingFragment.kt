@@ -6,12 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.amanda.task.R
 import com.amanda.task.data.model.Task
 import com.amanda.task.databinding.FragmentDoingBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.amanda.task.ui.adapter.TaskAdapter
 import com.amanda.task.data.model.Status
+import com.amanda.task.ui.util.FirebaseHelper
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
 class DoingFragment : Fragment() {
     private var _binding: FragmentDoingBinding? = null
@@ -63,14 +68,38 @@ class DoingFragment : Fragment() {
     }
 
     private fun getTask() {
-        val taskList = listOf(
-            Task("10", "Implementar tela de cadastro", Status.DOING),
-            Task("11", "Corrigir bug no login", Status.DOING),
-            Task("12", "Testar integração com API", Status.DOING),
-            Task("13", "Melhorar layout da home", Status.DOING),
-            Task("14", "Organizar estrutura do projeto", Status.DOING),
-        )
-        taskAdapter.submitList(taskList)
+        FirebaseHelper.getDatabase()
+            .child("task")
+            .child(FirebaseHelper.getIdUser())
+            .addValueEventListener(object: ValueEventListener{
+                override fun onDataChange(p0: DataSnapshot) {
+                    val taskList = mutableListOf<Task>()
+
+                    for (ds in p0.children){
+                        val task = ds.getValue(Task::class.java) as Task
+
+                        if(task.status == Status.DOING){
+                            taskList.add(task)
+                        }
+                    }
+                    binding.progressBar.isVisible = false
+                    listEmpty(taskList)
+
+                    taskList.reverse()
+                    taskAdapter.submitList(taskList)
+                }
+
+                override fun onCancelled(p0: DatabaseError) {
+                    Toast.makeText(requireContext(), R.string.error_generic, Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+    private fun listEmpty(taskList: List<Task>){
+        binding.textInfo.text = if (taskList.isEmpty()){
+            getString(R.string.text_list_task_empty)
+        }else{
+            ""
+        }
     }
 
     override fun onDestroyView() {

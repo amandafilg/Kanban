@@ -102,7 +102,7 @@ class TodoFragment : Fragment() {
             }
 
             TaskAdapter.SELECT_EDIT -> {
-                val action = HomeFragmentDirections.actionHomeFragmentToFormTaskFragment(task)
+                val action =  HomeFragmentDirections.actionHomeFragmentToFormTaskFragment(task)
                 findNavController().navigate(action)
                 Toast.makeText(requireContext(), "Editando ${task.description}", Toast.LENGTH_SHORT).show()
             }
@@ -120,7 +120,7 @@ class TodoFragment : Fragment() {
 
     private fun getTask() {
         FirebaseHelper.getDatabase()
-            .child("tasks")
+            .child("task")
             .child(FirebaseHelper.getIdUser())
             .addValueEventListener(object: ValueEventListener{
                 override fun onDataChange(p0: DataSnapshot) {
@@ -128,7 +128,6 @@ class TodoFragment : Fragment() {
 
                     for (ds in p0.children){
                         val task = ds.getValue(Task::class.java) as Task
-                        taskList.add(task)
 
                         if(task.status == Status.TODO){
                             taskList.add(task)

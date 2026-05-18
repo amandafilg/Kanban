@@ -8,7 +8,7 @@ import com.amanda.task.R
 
 class FirebaseHelper {
     companion object{
-        fun getDatabase() = Firebase.database.reference
+        fun getDatabase() = Firebase.database("https://kanban-9a6b9-default-rtdb.firebaseio.com/").reference
         fun getAuth() = FirebaseAuth.getInstance()
         fun getIdUser() = getAuth().currentUser?.uid ?: ""
         fun isAuthenticated() = getAuth().currentUser != null
